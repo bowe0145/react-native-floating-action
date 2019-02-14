@@ -1,14 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import {
-  StyleSheet,
-  Text,
-  Image,
-  View,
-  Animated
-} from 'react-native';
+import { Animated, Image, StyleSheet, Text, View } from "react-native";
+import React, { Component } from "react";
 
-import { getTouchableComponent } from './utils/touchable';
+import PropTypes from "prop-types";
+import { getTouchableComponent } from "./utils/touchable";
 
 class FloatingActionItem extends Component {
   constructor(props) {
@@ -19,7 +13,9 @@ class FloatingActionItem extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.active !== this.props.active) {
-      Animated.spring(this.animation, { toValue: nextProps.active ? 1 : 0 }).start();
+      Animated.spring(this.animation, {
+        toValue: nextProps.active ? 1 : 0
+      }).start();
     }
   }
 
@@ -44,7 +40,9 @@ class FloatingActionItem extends Component {
     } = this.props;
 
     if (elevation !== undefined) {
-      console.warn('FloatingActionItem: "elevation" property was deprecated. Please use "textElevation"');
+      console.warn(
+        'FloatingActionItem: "elevation" property was deprecated. Please use "textElevation"'
+      );
     }
 
     if (text) {
@@ -58,7 +56,7 @@ class FloatingActionItem extends Component {
               backgroundColor: textBackground,
               elevation: textElevation || elevation,
               shadowOffset: {
-                height: textElevation || elevation,
+                height: textElevation || elevation
               }
             },
             textContainerStyle
@@ -96,9 +94,11 @@ class FloatingActionItem extends Component {
 
     return (
       <View key="button" style={[styles.button, { backgroundColor: color }]}>
-        {
-          React.isValidElement(icon) ? icon : <Image style={iconStyle} source={icon} />
-        }
+        {React.isValidElement(icon) ? (
+          icon
+        ) : (
+          <Image style={iconStyle} source={icon} />
+        )}
       </View>
     );
   }
@@ -124,7 +124,7 @@ class FloatingActionItem extends Component {
     const components = [];
     const distanceToEdgeActionContainer = {};
 
-    if (position === 'left') {
+    if (position === "left") {
       if (render) {
         components.push(render({ key: name }));
       } else {
@@ -132,7 +132,7 @@ class FloatingActionItem extends Component {
         components.push(this.renderText());
       }
       distanceToEdgeActionContainer.paddingLeft = distanceToEdge + margin;
-    } else if (position === 'right') {
+    } else if (position === "right") {
       if (render) {
         components.push(render({ key: name }));
       } else {
@@ -147,7 +147,11 @@ class FloatingActionItem extends Component {
     }
 
     return (
-      <Touchable activeOpacity={0.4} style={styles.container} onPress={this.handleOnPress}>
+      <Touchable
+        activeOpacity={0.4}
+        style={styles.container}
+        onPress={this.handleOnPress}
+      >
         <Animated.View
           style={[
             styles.actionContainer,
@@ -180,7 +184,7 @@ FloatingActionItem.propTypes = {
   // not on doc
   textElevation: PropTypes.number,
   // not modified by user
-  position: PropTypes.oneOf(['left', 'right', 'center']),
+  position: PropTypes.oneOf(["left", "right", "center"]),
   active: PropTypes.bool,
   distanceToEdge: PropTypes.number,
   paddingTopBottom: PropTypes.number, // modified by parent property "actionsPaddingTopBottom"
@@ -190,11 +194,11 @@ FloatingActionItem.propTypes = {
 };
 
 FloatingActionItem.defaultProps = {
-  color: '#1253bc',
+  color: "#1253bc",
   distanceToEdge: 30,
   textElevation: 5,
-  textColor: '#444444',
-  textBackground: '#ffffff',
+  textColor: "#444444",
+  textBackground: "#ffffff",
   margin: 8
 };
 
@@ -202,12 +206,12 @@ const styles = StyleSheet.create({
   container: {
     elevation: 0,
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: "column"
   },
   actionContainer: {
     elevation: 0,
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingLeft: 0,
     paddingRight: 0,
     paddingBottom: 8,
@@ -224,7 +228,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 5
     },
-    shadowColor: '#000000',
+    shadowColor: "#000000",
     shadowRadius: 3,
     elevation: 5,
     borderRadius: 4,
@@ -242,28 +246,28 @@ const styles = StyleSheet.create({
     lineHeight: 20
   },
   button: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 20,
     shadowOpacity: 0.35,
     shadowOffset: {
       width: 0,
       height: 5
     },
-    shadowColor: '#000000',
+    shadowColor: "#000000",
     shadowRadius: 3,
     elevation: 5,
     width: 40,
     height: 40
   },
   iconLogo: {
-    resizeMode: 'cover',
+    resizeMode: "cover",
     width: 40,
     height: 40,
     borderRadius: 20
   },
   icon: {
-    resizeMode: 'contain',
+    resizeMode: "contain",
     width: 20,
     height: 20
   }

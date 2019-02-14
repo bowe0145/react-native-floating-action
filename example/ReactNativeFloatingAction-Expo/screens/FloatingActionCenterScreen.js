@@ -1,36 +1,41 @@
-import React, { PureComponent } from 'react';
-import { View, SafeAreaView, StyleSheet, Alert } from 'react-native';
-import { FloatingAction } from 'react-native-floating-action';
+import { Alert, SafeAreaView, StyleSheet, View } from "react-native";
+import React, { PureComponent } from "react";
 
-import Property from '../components/Property';
+import { FloatingAction } from "react-native-floating-action";
+import Property from "../components/Property";
 
 class FloatingActionCenterScreen extends PureComponent {
   static navigationOptions = {
-    title: 'Right position'
+    title: "Right position"
   };
 
   render() {
-    const actions = [{
-      text: 'Accessibility',
-      icon: require('../images/ic_accessibility_white.png'),
-      name: 'bt_accessibility',
-      position: 2
-    }, {
-      text: 'Language',
-      icon: require('../images/ic_language_white.png'),
-      name: 'bt_language',
-      position: 1
-    }, {
-      text: 'Location',
-      icon: require('../images/ic_room_white.png'),
-      name: 'bt_room',
-      position: 3
-    }, {
-      text: 'Video',
-      icon: require('../images/ic_videocam_white.png'),
-      name: 'bt_videocam',
-      position: 4
-    }];
+    const actions = [
+      {
+        text: "Accessibility",
+        icon: require("../images/ic_accessibility_white.png"),
+        name: "bt_accessibility",
+        position: 2
+      },
+      {
+        text: "Language",
+        icon: require("../images/ic_language_white.png"),
+        name: "bt_language",
+        position: 1
+      },
+      {
+        text: "Location",
+        icon: require("../images/ic_room_white.png"),
+        name: "bt_room",
+        position: 3
+      },
+      {
+        text: "Video",
+        icon: require("../images/ic_videocam_white.png"),
+        name: "bt_videocam",
+        position: 4
+      }
+    ];
 
     return (
       <SafeAreaView style={styles.container}>
@@ -43,11 +48,13 @@ class FloatingActionCenterScreen extends PureComponent {
           <FloatingAction
             position="center"
             actions={actions}
-            onPressItem={
-              (name) => {
-                Alert.alert('Icon pressed', `the icon ${name} was pressed`);
-              }
-            }
+            animationDegrees={{
+              visibility: 90,
+              press: 100
+            }}
+            onPressItem={name => {
+              Alert.alert("Icon pressed", `the icon ${name} was pressed`);
+            }}
           />
         </View>
       </SafeAreaView>
@@ -58,7 +65,7 @@ class FloatingActionCenterScreen extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: "#fff"
   }
 });
 
