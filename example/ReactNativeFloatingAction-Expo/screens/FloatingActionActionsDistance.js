@@ -59,30 +59,28 @@ class FloatingActionRightScreen extends PureComponent {
   }
 }
 
-const button = {
-  buttonContainer: {
-    backgroundColor: "#000"
-  }
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff"
   },
   buttonContainer: {
-    backgroundColor: "#000",
+    overflow: "visible",
     zIndex: 2,
-    width: 5,
-    height: 5,
-    borderRadius: 0,
-    alignItems: "stretch",
+    width: 50,
+    height: 50,
+    borderRadius: 1,
+    alignItems: "center",
     justifyContent: "center",
-    shadowOpacity: 1,
+    shadowOpacity: 0.35,
     shadowOffset: {
       width: 0,
       height: 5
-    }
+    },
+    shadowColor: "#000000",
+    shadowRadius: 3,
+    elevation: 5,
+    position: "absolute"
   }
 });
 

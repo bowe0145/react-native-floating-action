@@ -340,9 +340,8 @@ class FloatingAction extends Component {
     } = this.props;
 
     // Create the style object
-    let StyleObject = Object.assign({}, styles, this.props.style);
+    let StyleObject = Object.assign(styles, this.props.style);
 
-    console.log(animationDegrees);
     if (buttonColor) {
       console.warn(
         'FloatingAction: "buttonColor" property was deprecated. Please use "color"'
@@ -435,7 +434,7 @@ class FloatingAction extends Component {
     const { active, keyboardHeight } = this.state;
 
     // Create the style object
-    let StyleObject = Object.assign({}, styles, this.props.style);
+    let StyleObject = Object.assign(styles, this.props.style);
 
     if (!actions || actions.length === 0) {
       return undefined;
@@ -494,6 +493,7 @@ class FloatingAction extends Component {
 
   renderTappableBackground() {
     const { overlayColor } = this.props;
+    let StyleObject = Object.assign(styles, this.props.style);
 
     // TouchableOpacity don't require a child
     return (
@@ -531,8 +531,7 @@ class FloatingAction extends Component {
     const { active } = this.state;
     const { showBackground } = this.props;
     // Create the style object
-    let StyleObject = Object.assign({}, styles, this.props.style);
-    console.log(StyleObject);
+    let StyleObject = Object.assign(styles, this.props.style);
 
     return (
       <Animated.View
