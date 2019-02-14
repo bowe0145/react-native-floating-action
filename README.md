@@ -137,6 +137,7 @@ this.floatingAction.animateButton();
 | onOpen                  | function                                  |                           | Function to be call after set state to **true**                                                                     |
 | onStateChange           | function                                  |                           | Function to be call after every state change. Will return state object                                              |
 | animationDegrees        | object( visiblity: number, press: number) | visibility: 90, press: 45 | Degrees for spinning the main button                                                                                |
+| style                   | StyleSheet                                |                           | Allows for styling anything in the component. Will overwrite any object being touched                               |
 
 **Actions**
 
